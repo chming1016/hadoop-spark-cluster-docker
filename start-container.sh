@@ -12,17 +12,17 @@ docker run -itd \
                 -p 8080:8080 \
                 --name hadoop-master \
                 --hostname hadoop-master \
-                chming1016/hadoop-saprk-cluster /usr/sbin/sshd -D &> /dev/null
+                chming1016/hadoop-spark-cluster /usr/sbin/sshd -D &> /dev/null
 
 # start hadoop slave container
 i=1
 while [ $i -lt $N ]
 do
-        echo "start hadoop-slave$i container..."
-        docker run -itd \
-                        --net=hadoop \
-                        --name hadoop-slave$i \
-                        --hostname hadoop-slave$i \
-                        chming1016/hadoop-saprk-cluster /usr/sbin/sshd -D &> /dev/null
-        i=$(( $i + 1 ))
-done
+    echo "start hadoop-slave$i container..."
+    docker run -itd \
+                    --net=hadoop \
+                    --name hadoop-slave$i \
+                    --hostname hadoop-slave$i \
+                    chming1016/hadoop-spark-cluster /usr/sbin/sshd -D &> /dev/null
+    i=$(( $i + 1 ))
+done 
