@@ -5,7 +5,7 @@
 ###1. docker pull
 
 ```
-docker pull chming1016/hadoop:v6
+docker pull chming1016/hadoop-spark-cluster
 ```
 
 ###2. create hadoop network
@@ -32,7 +32,7 @@ docker run -itd \
                 -p 8080:8080 \
                 --name hadoop-master \
                 --hostname hadoop-master \
-                chming1016/hadoop:v6 /usr/sbin/sshd -D &> /dev/null
+                chming1016/hadoop-spark-cluster /usr/sbin/sshd -D &> /dev/null
 
 # start hadoop slave container
 i=1
@@ -43,7 +43,7 @@ do
 	                --net=hadoop \
 	                --name hadoop-slave$i \
 	                --hostname hadoop-slave$i \
-	                chming1016/hadoop:v6 /usr/sbin/sshd -D &> /dev/null
+	                chming1016/hadoop-spark-cluster /usr/sbin/sshd -D &> /dev/null
 	i=$(( $i + 1 ))
 done 
 ```

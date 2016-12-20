@@ -26,7 +26,14 @@ RUN mkdir -p ~/hdfs/namenode && \
 	mkdir $HADOOP_HOME/logs 
 # config ssh
 RUN echo 'Port 2122' >> /etc/ssh/ssh_config && \
-	sed -i 's/Port 22/Port 2122/g' /etc/ssh/sshd_config
+	sed -i 's/Port 22/Port 2122/g' /etc/ssh/sshd_config && \
+	echo 'Host localhost' > ~/.ssh/config && \
+	echo 'StrictHostKeyChecking no' >> ~/.ssh/config && \
+	echo 'Host 0.0.0.0' >> ~/.ssh/config && \
+	echo 'StrictHostKeyChecking no' >> ~/.ssh/config && \
+	echo 'Host hadoop-*' >> ~/.ssh/config && \
+	echo 'StrictHostKeyChecking no' >> ~/.ssh/config && \
+	echo 'UserKnownHostsFile=/dev/null' >> ~/.ssh/config
 # config hadoop-env.sh and core-site.xml	
 RUN sed -i 's/${JAVA_HOME}/\/usr\/lib\/jvm\/java-8-openjdk-amd64/g' $HADOOP_HOME/etc/hadoop/hadoop-env.sh && \
 	sed -i 's/<configuration>//g' $HADOOP_HOME/etc/hadoop/core-site.xml && \
