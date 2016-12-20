@@ -1,5 +1,11 @@
 #Hadoop and Spark Cluster(1 master and 3 slaves)
 
+```
+Hadoop v2.7.3
+Spark v2.0.2
+Docker v1.12.5
+```
+
 ##Using Docker Containers
 
 ###1. docker pull
