@@ -39,24 +39,24 @@ RUN sed -i 's/${JAVA_HOME}/\/usr\/lib\/jvm\/java-8-openjdk-amd64/g' $HADOOP_HOME
     sed -i 's/<configuration>//g' $HADOOP_HOME/etc/hadoop/core-site.xml && \
 	sed -i 's/<\/configuration>//g' $HADOOP_HOME/etc/hadoop/core-site.xml && \
 	echo '<configuration>' >> $HADOOP_HOME/etc/hadoop/core-site.xml && \
-	echo -e '\t<name>fs.default.name</name>' >> $HADOOP_HOME/etc/hadoop/core-site.xml && \
-    echo -e '\t<value>hdfs://hadoop-master:9000</value>' >> $HADOOP_HOME/etc/hadoop/core-site.xml && \
+	echo '\t<name>fs.default.name</name>' >> $HADOOP_HOME/etc/hadoop/core-site.xml && \
+    echo '\t<value>hdfs://hadoop-master:9000</value>' >> $HADOOP_HOME/etc/hadoop/core-site.xml && \
 	echo '</configuration>' >> $HADOOP_HOME/etc/hadoop/core-site.xml
 # config yarn-site.xml
 RUN sed -i 's/<configuration>//g' $HADOOP_HOME/etc/hadoop/yarn-site.xml && \ 
     sed -i 's/<\/configuration>//g' $HADOOP_HOME/etc/hadoop/yarn-site.xml && \
     echo '<configuration>' >> $HADOOP_HOME/etc/hadoop/yarn-site.xml && \
     echo '<property>' >> $HADOOP_HOME/etc/hadoop/yarn-site.xml && \
-	echo -e '\t<name>yarn.nodemanager.aux-services</name>' >> $HADOOP_HOME/etc/hadoop/yarn-site.xml && \
-    echo -e '\t<value>mapreduce_shuffle</value>' >> $HADOOP_HOME/etc/hadoop/yarn-site.xml && \
+	echo '\t<name>yarn.nodemanager.aux-services</name>' >> $HADOOP_HOME/etc/hadoop/yarn-site.xml && \
+    echo '\t<value>mapreduce_shuffle</value>' >> $HADOOP_HOME/etc/hadoop/yarn-site.xml && \
     echo '</property>' >> $HADOOP_HOME/etc/hadoop/yarn-site.xml && \
     echo '<property>'  >> $HADOOP_HOME/etc/hadoop/yarn-site.xml && \
-    echo -e '\t<name>yarn.nodemanager.aux-services.mapreduce_shuffle.class</name>' >> $HADOOP_HOME/etc/hadoop/yarn-site.xml && \
-    echo -e '\t<value>org.apache.hadoop.mapred.ShuffleHandler</value>' >> $HADOOP_HOME/etc/hadoop/yarn-site.xml && \
+    echo '\t<name>yarn.nodemanager.aux-services.mapreduce_shuffle.class</name>' >> $HADOOP_HOME/etc/hadoop/yarn-site.xml && \
+    echo '\t<value>org.apache.hadoop.mapred.ShuffleHandler</value>' >> $HADOOP_HOME/etc/hadoop/yarn-site.xml && \
     echo '</property>' >> $HADOOP_HOME/etc/hadoop/yarn-site.xml && \
     echo '<property>' >> $HADOOP_HOME/etc/hadoop/yarn-site.xml && \
-    echo -e '\t<name>yarn.resourcemanager.hostname</name>' >> $HADOOP_HOME/etc/hadoop/yarn-site.xml && \
-    echo -e '\t<value>hadoop-master</value>' >> $HADOOP_HOME/etc/hadoop/yarn-site.xml && \
+    echo '\t<name>yarn.resourcemanager.hostname</name>' >> $HADOOP_HOME/etc/hadoop/yarn-site.xml && \
+    echo '\t<value>hadoop-master</value>' >> $HADOOP_HOME/etc/hadoop/yarn-site.xml && \
     echo '</property>' >> $HADOOP_HOME/etc/hadoop/yarn-site.xml && \
 	echo '</configuration>' >> $HADOOP_HOME/etc/hadoop/yarn-site.xml
 # config hdfs-site.xml
@@ -64,23 +64,23 @@ RUN sed -i 's/<configuration>//g' $HADOOP_HOME/etc/hadoop/hdfs-site.xml && \
     sed -i 's/<\/configuration>//g' $HADOOP_HOME/etc/hadoop/hdfs-site.xml && \
 	echo '<configuration>' >> $HADOOP_HOME/etc/hadoop/hdfs-site.xml && \
 	echo '<property>' >> $HADOOP_HOME/etc/hadoop/hdfs-site.xml && \
-    echo -e '\t<name>dfs.namenode.name.dir</name>' >> $HADOOP_HOME/etc/hadoop/hdfs-site.xml && \
-    echo -e '\t<value>file:///root/hdfs/namenode</value>' >> $HADOOP_HOME/etc/hadoop/hdfs-site.xml && \
+    echo '\t<name>dfs.namenode.name.dir</name>' >> $HADOOP_HOME/etc/hadoop/hdfs-site.xml && \
+    echo '\t<value>file:///root/hdfs/namenode</value>' >> $HADOOP_HOME/etc/hadoop/hdfs-site.xml && \
     echo '</property>' >> $HADOOP_HOME/etc/hadoop/hdfs-site.xml && \
     echo '<property>'  >> $HADOOP_HOME/etc/hadoop/hdfs-site.xml && \
-    echo -e '\t<name>dfs.datanode.data.dir</name>' >> $HADOOP_HOME/etc/hadoop/hdfs-site.xml && \
-    echo -e '\t<value>file:///root/hdfs/datanode</value>' >> $HADOOP_HOME/etc/hadoop/hdfs-site.xml && \
+    echo '\t<name>dfs.datanode.data.dir</name>' >> $HADOOP_HOME/etc/hadoop/hdfs-site.xml && \
+    echo '\t<value>file:///root/hdfs/datanode</value>' >> $HADOOP_HOME/etc/hadoop/hdfs-site.xml && \
     echo '</property>' >> $HADOOP_HOME/etc/hadoop/hdfs-site.xml && \
     echo '<property>' >> $HADOOP_HOME/etc/hadoop/hdfs-site.xml && \
-    echo -e '\t<name>dfs.replication</name>' >> $HADOOP_HOME/etc/hadoop/hdfs-site.xml && \
-    echo -e '\t<value>3</value>' >> $HADOOP_HOME/etc/hadoop/hdfs-site.xml && \
+    echo '\t<name>dfs.replication</name>' >> $HADOOP_HOME/etc/hadoop/hdfs-site.xml && \
+    echo '\t<value>3</value>' >> $HADOOP_HOME/etc/hadoop/hdfs-site.xml && \
     echo '</property>' >> $HADOOP_HOME/etc/hadoop/hdfs-site.xml && \
 	echo '</configuration>' >> $HADOOP_HOME/etc/hadoop/hdfs-site.xml
 # config mapred-site.xml
 RUN echo '<configuration>' > $HADOOP_HOME/etc/hadoop/mapred-site.xml && \
     echo '<property>' >> $HADOOP_HOME/etc/hadoop/mapred-site.xml && \
-    echo -e '\t<name>mapreduce.framework.name</name>' >> $HADOOP_HOME/etc/hadoop/mapred-site.xml && \
-    echo -e '\t<value>yarn</value>' >> $HADOOP_HOME/etc/hadoop/mapred-site.xml && \
+    echo '\t<name>mapreduce.framework.name</name>' >> $HADOOP_HOME/etc/hadoop/mapred-site.xml && \
+    echo '\t<value>yarn</value>' >> $HADOOP_HOME/etc/hadoop/mapred-site.xml && \
     echo '</property>' >> $HADOOP_HOME/etc/hadoop/mapred-site.xml && \
     echo '</configuration>' >> $HADOOP_HOME/etc/hadoop/mapred-site.xml
 # config slaves
@@ -105,6 +105,6 @@ RUN chmod +x $HADOOP_HOME/sbin/start-all.sh && \
     chmod +x $HADOOP_HOME/sbin/start-yarn.sh 
 
 # format namenode
-RUN /usr/local/hadoop/bin/hdfs namenode -format -force
+RUN /usr/local/hadoop/bin/hdfs namenode -format
 
 CMD [ "sh", "-c", "service ssh start; bash"]
